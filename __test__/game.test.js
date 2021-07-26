@@ -2,7 +2,7 @@ const Game = require('../src/game').default
 const fs = require('fs')
 
 describe('App', () => {
-  it('Contains the compiled JavaScript', async (done) => {
+  it('Contains the compiled JavaScript', done => { // D003 2021-07-26 AH - Test functions cannot both take a 'done' callback and return something
     fs.readFile('./public/main.js', 'utf8', (err, data) => {
       expect(err).toBe(null)
       expect(data).toMatchSnapshot()
