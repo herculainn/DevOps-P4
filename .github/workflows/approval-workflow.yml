@@ -2,13 +2,13 @@ name: Pull Request Labeller
 on: pull_request_review
 jobs:
   labelWhenApproved:
-    name: Label Pull Request when Approved
-    runs-oon: ubuntu-latest
+    name: Label when approved
+    runs-on: ubuntu-latest
     steps:
-    - name: Label Pull Request when Approved Steps
+    - name: Label when approved
       uses: pullreminders/label-when-approved-action@master
       env:
         APPROVALS: "1"
-        GITHUB_TOKEN: $({ secrets.GITHUB_TOKEN })
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         ADD_LABEL: "approved"
-        REMOVE_LABEL: "awaiting%20review"
+        # REMOVE_LABEL: "awaiting%20review" # removed
