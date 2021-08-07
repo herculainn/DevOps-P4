@@ -28,7 +28,7 @@ jobs:
       - uses: actions/download-artifact@main
         with: 
           name: gamneArtifact
-          path: public/
+          path: public
 
       - name: Test using Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
