@@ -19,7 +19,7 @@ jobs:
       - uses: actions/upload-artifact@v2
         with:
           name: theArtifact
-          path: /public/
+          path: public/
     
   test:
     needs: build # this job must be done
