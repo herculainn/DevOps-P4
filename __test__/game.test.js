@@ -1,16 +1,6 @@
 const Game = require('../src/game').default
 const fs = require('fs')
 
-/*describe('App', () => {
-  it('Contains the compiled JavaScript', done => { // D003 2021-07-26 AH - Test functions cannot both take a 'done' callback and return something
-    fs.readFile('./public/main.js', 'utf8', (err, data) => {
-      expect(err).toBe(null)
-      expect(data).toMatchSnapshot()
-      done()
-    })
-  })
-})*/
-
 describe('App', () => {
   it('Contains the compiled JavaScript', async (done) => {
     fs.readFile('./public/main.js', 'utf8', (err, data) => {
@@ -29,11 +19,7 @@ describe('Game', () => {
     game = new Game(p1, p2)
   })
 
-  describe('Game', () => {
-    
-    console.log(game.p1);
-    console.log(game.p2);
-    
+  describe('Game', () => {    
     it('Initializes with two players', async () => {
       expect(game.p1).toBe('Salem')
       expect(game.p2).toBe('Nate')
@@ -53,8 +39,7 @@ describe('Game', () => {
 
       Math.random = () => 0.6
       expect(new Game(p1, p2).player).toBe('Nate')
-    })
-    
+    })    
   })
 
   describe('turn', () => {
