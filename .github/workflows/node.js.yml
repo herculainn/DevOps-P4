@@ -19,7 +19,7 @@ jobs:
       - uses: actions/upload-artifact@main # on to main
         with:
           name: webpack artifacts
-          path: public/
+          path: public
     
   test:
     needs: build # this job must be done
@@ -31,11 +31,14 @@ jobs:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
     # D004 2021-07-26 AH - removed steps from test
     steps:
-      - uses: actions/checkout@v2    
+      - uses: actions/checkout@v2   
+      
+      # P003 2021-07-26 AH - Use artifact storage
       - uses: actions/download-artifact@main # from main
         with: 
           name: webpack artifacts
           path: public    
+          
       - name: Use Node.js ${{ matrix.node-version }} # each of the versions specified under node-version
         uses: actions/setup-node@v2
         with:
