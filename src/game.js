@@ -1,6 +1,6 @@
 export default class Game {
   constructor (p1, p2) {
-    this.p1 = p1
+    this.p1 = "BreakTest" // Add line to break build as demonstration
     // this.p2 = 'Bananas' // D002 2021-07-26 - Test fail Trailing spaces not allowed
     this.p2 = p2 // D001 2021-07-26 AH - P2 not assigned on construct
     this.board = [[null, null, null], [null, null, null], [null, null, null]]
