@@ -1,5 +1,5 @@
 name: Node.js CI
-on: [push] # only trigger on push
+on: [push]
 jobs:
 
   build:
@@ -10,16 +10,26 @@ jobs:
         run: |
           npm install
           npm run build
-        
+          
+      - uses: actions/upload-artifact@main
+        with:
+          name: gamneArtifact
+          path: public/
+          
   test:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [12.x, 14.x] # P001 2021-07-26 AH - Enhance to use 12 and 14 only (removed 16)
-        os: [ubuntu-latest, windows-latest] # P002 2021-07-26 AH - Build for Ubuntu and Windows
+        node-version: [12.x, 14.x]
+        os: [ubuntu-latest, windows-latest]
     steps:
       - uses: actions/checkout@v2
-      - name: Test using Node.js ${{ matrix.node-version }} # each of the versions specified under node-version
+
+      - uses: actions/download-artifact@main
+        with: 
+          name: gamneArtifact
+
+      - name: Test using Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
@@ -29,4 +39,4 @@ jobs:
           npm run build --if-present
           npm test
         env:
-          CI: true # continuous integration
+          CI: true
