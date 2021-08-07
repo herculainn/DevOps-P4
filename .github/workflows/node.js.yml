@@ -16,10 +16,10 @@ jobs:
           npm run build
           
       # P003 2021-07-26 AH - Use artifact storage
-      - uses: actions/upload-artifact@v2
-        with:
-          name: theArtifact
-          path: public/
+      #- uses: actions/upload-artifact@v2
+      #  with:
+      #    name: theArtifact
+      #    path: public/
     
   test:
     needs: build # this job must be done
@@ -28,16 +28,14 @@ jobs:
       matrix:
         node-version: [12.x, 14.x] # P001 2021-07-26 AH - Enhance to use 12 and 14 only (removed 16)
         os: [ubuntu-latest, windows-latest] # P002 2021-07-26 AH - Build for Ubuntu and Windows
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-    # D004 2021-07-26 AH - removed steps from test
     steps:
       - uses: actions/checkout@v2   
       
       # P003 2021-07-26 AH - Use artifact storage
-      - uses: actions/download-artifact@v2
-        with: 
-          name: theArtifact
-          #path: /public/ # leave in current working directory instead
+      #- uses: actions/download-artifact@v2
+      #  with: 
+      #    name: theArtifact
+      #    path: public/
           
       - name: Use Node.js ${{ matrix.node-version }} # each of the versions specified under node-version
         uses: actions/setup-node@v2
