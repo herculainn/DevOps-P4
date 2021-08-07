@@ -2,7 +2,7 @@ export default class Game {
   constructor (p1, p2) {
     this.p1 = p1
     this.p2 = 'Bananas' // break game again
-    //this.p2 = p2 // D001 2021-07-26 AH - P2 not assigned on construct
+    // this.p2 = p2 // D001 2021-07-26 AH - P2 not assigned on construct
     this.board = [[null, null, null], [null, null, null], [null, null, null]]
     this.player = Math.random() < 0.5 ? this.p1 : this.p2
     this.sym = 'X'
