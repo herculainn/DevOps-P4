@@ -9,11 +9,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2    
-      - name: npm install and build webpack
-        run:
-          npm install
-          npm run build
+    - uses: actions/checkout@v2    
+    - name: npm install and build webpack
+      run:
+        npm install
+        npm run build
           
       # P003 2021-07-26 AH - Use artifact storage
       #- uses: actions/upload-artifact@v2
@@ -29,7 +29,7 @@ jobs:
         node-version: [12.x, 14.x] # P001 2021-07-26 AH - Enhance to use 12 and 14 only (removed 16)
         os: [ubuntu-latest, windows-latest] # P002 2021-07-26 AH - Build for Ubuntu and Windows
     steps:
-      - uses: actions/checkout@v2   
+    - uses: actions/checkout@v2   
       
       # P003 2021-07-26 AH - Use artifact storage
       #- uses: actions/download-artifact@v2
@@ -37,14 +37,14 @@ jobs:
       #    name: theArtifact
       #    path: public/
           
-      - name: Use Node.js ${{ matrix.node-version }} # each of the versions specified under node-version
-        uses: actions/setup-node@v2
-        with:
-          node-version: ${{ matrix.node-version }}
+    - name: Use Node.js ${{ matrix.node-version }} # each of the versions specified under node-version
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ matrix.node-version }}
           
-      - name: npm install and test
-        run:
-          npm install
-          npm test
-        env:
-          CI: true # continuous integration
+    - name: npm install and test
+      run:
+        npm install
+        npm test
+      env:
+        CI: true # continuous integration
