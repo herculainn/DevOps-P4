@@ -3,7 +3,7 @@ on: [push]
 
 jobs:
 
-  build:
+  pushNotification:
     runs-on: ubuntu-latest
     steps:
     - name: Send Push Notification
